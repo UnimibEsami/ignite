@@ -26,7 +26,6 @@ on:
 jobs:
   sonarcloud:
     name: Sonar Analysis
-    if: github.repository == 'apache/ignite'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
