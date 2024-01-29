@@ -1,0 +1,22 @@
+name: Trigger Analysis on All Tags
+
+on:
+  workflow_dispatch:
+
+jobs:
+  trigger-analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: List tags and trigger analyses
+        run: |
+          tags=$(git tag)
+          for tag in $tags; do
+            echo "Triggering analysis for tag: $tag"
+            # Trigger another workflow or use an API call to start the analysis
+            # Esempio: gh workflow run analyze.yml -f tag=$tag
+          done
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
